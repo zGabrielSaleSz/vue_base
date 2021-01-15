@@ -1,13 +1,18 @@
 {
-  "name": "reaction-timer",
+  "name": "vue_base",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build-css": "tailwindcss build src/styles.css -o public/styles.css"
   },
   "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "autoprefixer": "^9.8.6",
     "core-js": "^3.6.5",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^3.0.0"
   },
   "devDependencies": {
