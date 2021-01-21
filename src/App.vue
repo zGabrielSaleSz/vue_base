@@ -1,41 +1,39 @@
 <template>
-  <div class="bg-red-500">
-      <h1>Joguinho da velocidade mental</h1>
-      <button v-on:click="start" :disabled="isPlaying">Play</button>
-      <Block v-if="isPlaying" :delay="delay"  @end="endGame" />
-      <Result v-if="showResults" :score="score" />
+  <div id="app" class="bg-red-500">
+    <InputText :content="defaultContent" @input="logValue"/>
+    <button @click="increment">Increment</button>
+    <button @click="decrement">Decrement</button>
+    {{count}}
   </div>
 
 
 </template>
 
 <script>
-import Block from './components/Block.vue'
-import Result from './components/Results.vue'
+import InputText from './components/common/InputText.vue'
+import { useStore } from 'vuex'
+import { computed } from 'vue';
 
 export default {
   name: 'App',
-  components: {Block, Result },
-  data() {
-    return {
-      isPlaying: false,
-      delay: null,
-      score: 0,
-      showResults: false
+  components: { InputText },
+  setup() {
+    const store = useStore();
+    const count = computed(() => store.state.number);
+
+    function increment() {
+      console.log("icnremento");
+      console.log(store);
+      store.commit('increment');
     }
+
+    function decrement() {
+      console.log("decremento");
+      store.commit('decrement');
+    }
+    return { count, increment, decrement };
   },
-  methods: {
-    start(){
-      this.delay = 2000 + Math.random() * 5000;
-      this.isPlaying = true;
-      this.showResults = false;
-    },
-    endGame(data){
-      this.score = data;
-      this.isPlaying = false;
-      this.showResults = true;
-    }
-  }
+
 }
 </script>
 
@@ -60,4 +58,5 @@ button{
 button:disabled{
   background-color: gray;
 }
+
 </style>
