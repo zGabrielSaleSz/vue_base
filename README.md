@@ -1,5 +1,4 @@
-# reaction-timer
-
+# Vue base project
 ## Project setup
 ```
 npm install

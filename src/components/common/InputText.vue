@@ -1,15 +1,15 @@
 <template>
-  <input type="text" v-model="content" @input="updateContent" placeholder="Placeholder" class=""/>
+  <input :type="type" v-model="content" @input="handleInput" :placeholder="placeholder"/>
 
 </template>
 
 <script>
 export default {
-    props: ['content'],
-    emits: ['input'],
+    props: ['content', 'type', 'placeholder'],
+    emits: ['handleInput'],
     methods:{
-        updateContent(text){
-            this.$emit('input', this.content);
+        handleInput(text){
+            this.$emit('handleInput', this.content);
         }
     }
 }
@@ -18,14 +18,28 @@ export default {
 <style scoped>
   input{
     @apply border-2;
-    @apply border-blue-500;
     @apply bg-white;
-    @apply placeholder-white;
-
-  }
-  
-  input:hover {
+    @apply placeholder-gray-600;
+    @apply border-gray-600;
+    @apply rounded-md;
+    @apply p-2;
     
-    @apply bg-blue-500;
+    @apply transition;
+    @apply duration-500;
+    @apply ease-in-out;
   }
+input:hover
+{
+    @apply outline-none;
+    @apply bg-white;
+    @apply border-blue-500;
+
+
+
+}
+input:focus{
+    @apply outline-none;
+    @apply bg-white;
+    @apply border-blue-500;
+}
 </style>
