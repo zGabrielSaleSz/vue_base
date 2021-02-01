@@ -1,5 +1,5 @@
 <template>
-  Hi mundo
+  is this a vue router configured page! 
 </template>
 
 <script>
